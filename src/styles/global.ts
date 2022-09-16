@@ -8,9 +8,18 @@ export const GlobalStyle = createGlobalStyle`
   }
   body,#root{
     width: 100%;
-    height: 100vh;
 
     font-size: 1rem;
+    font-family:${({ theme }) => theme.fonts.inter};
+
+    ::-webkit-scrollbar{
+      background: ${({ theme }) => theme.colors.zinc[900]};
+      width: 10px;
+    }
+    ::-webkit-scrollbar-thumb{
+      background: ${({ theme }) => theme.colors.violet[500]};
+      border-radius: 10px;
+    }
   }
   input,button{
     border: 0;

@@ -1,0 +1,9 @@
+.SwiperModal {
+  width: 80%;
+
+  margin-top: 30px;
+}
+.swiper-button-next,
+.swiper-button-prev {
+  color: #a1a1aa;
+}
