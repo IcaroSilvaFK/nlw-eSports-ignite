@@ -1,7 +1,7 @@
 import { MagnifyingGlassPlus } from 'phosphor-react';
 import { Outlet } from 'react-router-dom';
-import { Button } from '../components/Button';
 
+import { Button } from '../components/Button';
 import { useModal } from '../store/useModal';
 
 import { Container, Header, Footer } from './styles';

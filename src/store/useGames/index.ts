@@ -13,8 +13,10 @@ export type IGameProps = {
 
 interface IUseGamesProps {
   getAll(): Promise<void>;
+  getGame(id: string): Promise<void>;
   refetch(): Promise<void>;
   games: IGameProps[] | null;
+  game: IGameProps | null;
   isLoading: boolean;
   isError: boolean;
 }
@@ -24,6 +26,7 @@ export const useGames = create<IUseGamesProps>()(
     persist(
       (set) => ({
         games: null,
+        game: null,
         isError: false,
         isLoading: false,
         async getAll() {
@@ -55,7 +58,15 @@ export const useGames = create<IUseGamesProps>()(
 
             set((state) => ({ ...state, games: data.games }));
           } catch (err) {
-            console.log(err);
+            set((state) => ({ ...state, isError: true }));
+          }
+        },
+        async getGame(id: string) {
+          try {
+            const { data } = await api.get(`/games/${id}`);
+
+            set((state) => ({ ...state, game: data.game }));
+          } catch (err) {
             set((state) => ({ ...state, isError: true }));
           }
         },

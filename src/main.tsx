@@ -6,6 +6,7 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { ThemeProvider } from 'styled-components';
 import { ToastContainer } from 'react-toastify';
+import { HelmetProvider } from 'react-helmet-async';
 
 import { theme } from './styles/theme';
 import { GlobalStyle } from './styles/global';
@@ -20,10 +21,12 @@ $modal.setAttribute('id', 'modal');
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <Routes />
-      <Modal />
-      <ToastContainer />
+      <HelmetProvider>
+        <GlobalStyle />
+        <Routes />
+        <Modal />
+        <ToastContainer />
+      </HelmetProvider>
     </ThemeProvider>
   </StrictMode>,
 );

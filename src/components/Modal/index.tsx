@@ -54,7 +54,7 @@ export function Modal() {
   const { colors } = useTheme();
   const [gameId, setGameId] = useState<string | number>(null);
   const [daysOnlyPlay, setDaysOnlyPlay] = useState<string[]>([]);
-  const { register, handleSubmit } = useForm<IFormProps>();
+  const { register, handleSubmit, reset } = useForm<IFormProps>();
   const [options, setOptions] = useState<IOptionsType[] | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const { refetch } = useGames((state) => state);
@@ -130,7 +130,6 @@ export function Modal() {
     if (!daysOnlyPlay.includes(day)) return;
 
     const newArray = daysOnlyPlay.filter((dayPlay) => dayPlay !== day);
-    console.log(newArray);
     setDaysOnlyPlay(newArray);
   }
 
@@ -151,6 +150,9 @@ export function Modal() {
       await refetch();
       setIsLoading(false);
       toastSuccess('Convite adicionado com sucesso');
+      reset();
+      setDaysOnlyPlay([]);
+      setOptions(null);
       closeModal();
     } catch (err) {
       setIsLoading(false);

@@ -6,7 +6,7 @@ type ButtonSelectProps = {
 };
 
 export const Container = styled.div`
-  position: absolute;
+  position: fixed;
 
   top: 0;
   bottom: 0;

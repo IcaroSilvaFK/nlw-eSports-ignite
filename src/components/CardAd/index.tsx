@@ -1,4 +1,6 @@
-import { Container, Col, Title, Ball, Label, Row } from './styles';
+import { MagnifyingGlassPlus } from 'phosphor-react';
+import { Button } from '../Button';
+import { Container, Col, Title, Ball, Label, Row, Center } from './styles';
 
 interface ICardAdProps {
   name: string;
@@ -42,6 +44,19 @@ export function CardAd({
           {audioIsActive ? 'Sim' : 'Não'}
         </Title>
       </Col>
+      <Center>
+        <a
+          href="https://canary.discord.com/login"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <Button
+            text="Conectar"
+            variant="solid"
+            leftIcon={<MagnifyingGlassPlus size={25} />}
+          />
+        </a>
+      </Center>
     </Container>
   );
 }
